@@ -12,7 +12,7 @@
   "content_scripts": [
     {
       "matches": ["*://calendar.google.com/*"],
-      "js": ["borderify.js"]
+      "js": ["change_background.js"]
     }
   ]
 
