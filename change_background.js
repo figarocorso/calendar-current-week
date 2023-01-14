@@ -43,7 +43,6 @@ function updateUi() {
         null,
     ).singleNodeValue;
 
-    console.log(week_element);
     if (week_element != null) {
         showUiCustomizations();
     } else {
@@ -51,6 +50,11 @@ function updateUi() {
     }
 }
 
-document.body.addEventListener("click", updateUi);
-document.body.addEventListener("keyup", updateUi);
-updateUi();
+async function highlightHeader() {
+    setTimeout(updateUi, 0);
+    setTimeout(updateUi, 1000);
+}
+
+document.body.addEventListener("click", highlightHeader);
+document.body.addEventListener("keyup", highlightHeader);
+highlightHeader();
