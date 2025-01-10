@@ -1,19 +1,13 @@
-Date.prototype.getWeek = function(){
-    // From stackoverflow: https://stackoverflow.com/a/9781448
-    var day_miliseconds = 86400000,
-        onejan = new Date(this.getFullYear(),0,1,0,0,0),
-        onejan_day = (onejan.getDay()==0) ? 7 : onejan.getDay(),
-        days_for_next_monday = (8-onejan_day),
-        onejan_next_monday_time = onejan.getTime() + (days_for_next_monday * day_miliseconds),
-        first_monday_year_time = (onejan_day>1) ? onejan_next_monday_time : onejan.getTime(),
-        this_date = new Date(this.getFullYear(), this.getMonth(),this.getDate(),0,0,0),// This at 00:00:00
-        this_time = this_date.getTime(),
-        days_from_first_monday = Math.round(((this_time - first_monday_year_time) / day_miliseconds));
-
-    var first_monday_year = new Date(first_monday_year_time);
-
-    return (days_from_first_monday>=0 && days_from_first_monday<364) ? Math.ceil((days_from_first_monday+1)/7) : 52;
-}
+Date.prototype.getWeek = function() {
+    var date = new Date(this.getTime());
+    date.setHours(0, 0, 0, 0);
+    // Set to Thursday in the current week to determine the correct year
+    date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
+    // January 4th is always in week 1
+    var week1 = new Date(date.getFullYear(), 0, 4);
+    // Calculate full weeks to the current date
+    return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+};
 
 function getHeaderElement() {
     return document.evaluate(
