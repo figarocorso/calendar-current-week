@@ -16,6 +16,10 @@
       "matches": ["*://calendar.google.com/*"],
       "js": ["change_background.js"]
     }
-  ]
+  ],
 
+  "action": {
+    "default_title": "Highlights current week",
+    "default_icon": "icons/g_background_48.png"
+  }
 }
