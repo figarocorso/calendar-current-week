@@ -29,7 +29,7 @@ function removeUiCustomizations() {
 function updateUi() {
     let current_week_number = (new Date()).getWeek();
     let week_element = document.evaluate(
-        '//*/header//*[text()="Week ' + current_week_number + '"]',
+        '//*/header//div[normalize-space(.)="Week ' + current_week_number + '"]',
         document,
         null,
         XPathResult.FIRST_ORDERED_NODE_TYPE,
