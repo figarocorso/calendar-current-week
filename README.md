@@ -19,3 +19,5 @@ To generate the zip file in macOS to upload it to the stores:
 ```
 zip -r -X calendar_current_week_1_2.zip change_background.js icons manifest.json
 ```
+
+For Firefox add-on, add `"browser_specific_settings"` item from `manifest_firefox.json` to `manifest.json`.
